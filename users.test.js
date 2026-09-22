@@ -12,7 +12,7 @@ describe('Testes Unitários - Módulo de Utilizadores', () => {
   });
 
   test('3. Deve criar um utilizador válido', () => {
-    const newUser = createUser('Mariana', 22);
+    const newUser = createUser('Mariana', 22, "Normal");
     expect(newUser.id).toBeDefined();
     expect(newUser.name).toBe('Mariana');
   });
@@ -25,4 +25,9 @@ describe('Testes Unitários - Módulo de Utilizadores', () => {
     const discount = calculateDiscount(65);
     expect(discount).toBe(0.2);
   });
+
+  test('6. Deve criar um cadastro premium', () => {
+    const newUser = createUser('Leo', 22, "Premium");
+    expect(newUser.tipoCadastro).toBe("Premium");
+  })
 });

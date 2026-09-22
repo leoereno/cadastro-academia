@@ -1,6 +1,6 @@
 const users = [
-  { id: 1, name: 'Alice', age: 25 },
-  { id: 2, name: 'Carlos', age: 65 },
+  { id: 1, name: 'Alice', age: 25, tipoCadastro: "premium" },
+  { id: 2, name: 'Carlos', age: 65, tipoCadastro: "Normal" },
 ];
 
 function findUserById(id) {
@@ -11,14 +11,18 @@ function findUserById(id) {
   return user;
 }
 
-function createUser(name, age) {
+function createUser(name, age, tipoCadastro) {
   if (!name || name.trim() === '') {
     throw new Error('Nome é obrigatório');
   }
   if (age < 0) {
     throw new Error('Idade inválida');
   }
-  const newUser = { id: users.length + 1, name, age };
+
+  if(!tipoCadastro) {
+    throw new Error('Tipo cadastro é obrigatorio');
+  }
+  const newUser = { id: users.length + 1, name, age, tipoCadastro };
   users.push(newUser);
   return newUser;
 }
