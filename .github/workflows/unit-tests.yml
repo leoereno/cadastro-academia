@@ -25,3 +25,15 @@ jobs:
 
       - name: Executar Jest
         run: npm test
+
+      - name: Enviar notificação no Discord
+        if: always()
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "Execução de Testes Unitários na PR"
+          description: |
+            Status da execução: **${{ job.status }}**
+            Repositório: ${{ github.repository }}
+            Branch/PR: ${{ github.ref_name }}
+          nodetail: false
