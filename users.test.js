@@ -29,5 +29,9 @@ describe('Testes Unitários - Módulo de Utilizadores', () => {
   test('6. Deve criar um cadastro premium', () => {
     const newUser = createUser('Leo', 22, "Premium");
     expect(newUser.tipoCadastro).toBe("Premium");
+  });
+
+    test('7. Deve lançar erro', () => {
+    expect(() => createUser('Leo', 22)).toThrow('Tipo cadastro é obrigatorio');
   })
 });
